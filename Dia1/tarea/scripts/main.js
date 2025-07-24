@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const menuWelcome = () => {
   return `=============================================
          Simulador de Gasto Diario
@@ -21,10 +20,6 @@ const menuRegistroGastos = () => {
 Ingrese la informacion del gasto:
 - Descripcion del gasto:`;
 };
-=======
-
-import solicitarEntero from "./modules/validaciones.js";
->>>>>>> 4cc1b64e56d62bf73ccba77e4ae3cc4392cc3da3
 
 const menuListarGastos = () => {
   return `=============================================
@@ -32,7 +27,6 @@ const menuListarGastos = () => {
 =============================================
 Seleccione una opcion para filtrar los gastos:
 
-<<<<<<< HEAD
 1. Ver todos los gastos
 2. Filtrar por categoria
 3. Filtrar por rango de fechas
@@ -43,7 +37,7 @@ const menuCalculoGastos = () => {
   return `=============================================
           Calcular Total de Gastos
 =============================================
-Seleccione el periodo de cálculo:
+Seleccione el periodo de calculo:
 
 1. Calcular total diario
 2. Calcular total semanal
@@ -117,7 +111,7 @@ Seleccione una opcion:
 };
 
 const submenuConfirmarEliminacion = () => {
-  return `¿Está seguro que desea eliminar este gasto? (S/N):`;
+  return `¿Esta seguro que desea eliminar este gasto? (S/N):`;
 };
 // Funcion para listar los gastos
 const listarGastos = (gastos) => {
@@ -470,7 +464,3 @@ while (true) {
       prompt("Opcion no valida. Por favor, seleccione una opcion del menu.");
   }
 }
-=======
-let soli= solicitarEntero()
-console.log(soli);
->>>>>>> 4cc1b64e56d62bf73ccba77e4ae3cc4392cc3da3
