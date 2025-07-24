@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //from datetime import datetime
 const solicitarEntero = (mensaje, min, max) => {
   while (true) {
@@ -26,3 +27,10 @@ while (true) {
     );
   }
 }
+=======
+export default solicitarEntero;
+
+function solicitarEntero() {
+    return 'solicitando entero'
+}        
+>>>>>>> 4cc1b64e56d62bf73ccba77e4ae3cc4392cc3da3

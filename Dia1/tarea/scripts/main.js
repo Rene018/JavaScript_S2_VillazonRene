@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const menuWelcome = () => {
   return `=============================================
          Simulador de Gasto Diario
@@ -20,6 +21,10 @@ const menuRegistroGastos = () => {
 Ingrese la informacion del gasto:
 - Descripcion del gasto:`;
 };
+=======
+
+import solicitarEntero from "./modules/validaciones.js";
+>>>>>>> 4cc1b64e56d62bf73ccba77e4ae3cc4392cc3da3
 
 const menuListarGastos = () => {
   return `=============================================
@@ -27,6 +32,7 @@ const menuListarGastos = () => {
 =============================================
 Seleccione una opcion para filtrar los gastos:
 
+<<<<<<< HEAD
 1. Ver todos los gastos
 2. Filtrar por categoria
 3. Filtrar por rango de fechas
@@ -464,3 +470,7 @@ while (true) {
       prompt("Opcion no valida. Por favor, seleccione una opcion del menu.");
   }
 }
+=======
+let soli= solicitarEntero()
+console.log(soli);
+>>>>>>> 4cc1b64e56d62bf73ccba77e4ae3cc4392cc3da3
