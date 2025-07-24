@@ -94,11 +94,18 @@ let listChefs = [
     especialidad: "Gourmet",
   },
 ];
-let ingrediente = {
-  nombre: "",
-  descripcion: "",
-  precio: "",
-  stock: "",
+const menu = (value) => {
+  return `=============================================
+  Hamburguesería 
+=============================================
+Seleccione una opcion:
+
+1. Registrar ${value}
+2. Listar ${value}s
+3. Editar ${value}s
+4. Eliminar ${value}s
+5. Salir al menu principal
+=============================================`;
 };
 const salir = () => {
   let salir = prompt(
@@ -126,7 +133,37 @@ const regresar = () => {
     alert("Opcion no valida");
   }
 };
-
+/* CRUD INGREDIENTES*/
+function registrarIngredientes(lista) {
+  let nombre = prompt(`=============================================
+  Registrar ingrediente
+=============================================
+  Ingrese el nombre`);
+  let descripcion = prompt("Ingrese la descripcion");
+  let precio = prompt("Ingrese el precio");
+  let stock = prompt("Ingrese el stock");
+  let ingrediente = {
+    nombre: nombre,
+    descripcion: descripcion,
+    precio: precio,
+    stock: stock,
+  };
+  let save = prompt(
+    `=============================================
+    Registrar ingrediente
+=============================================
+    ¿Desea guardar el ingrediente? (s/n)`
+  ).toLowerCase();
+  if (save == "s") {
+    alert("Ingrediente guardado correctamente");
+    lista.push(ingrediente);
+    return lista;
+  }
+  if (save == "n") {
+    alert("Ingrediente no guardado");
+  }
+  alert("Ingrediente registrado correctamente");
+}
 function listarIngrediantes(lista) {
   let listado = "";
   for (let i = 0; i < lista.length; i++) {
@@ -162,7 +199,6 @@ function editarIngrediantes(lista) {
     alert("Ingrediente no encontrado");
   }
 }
-
 function eliminarIngrediantes(lista) {
   let encontrado = false;
   let buscado = prompt("Ingrese el nombre del ingrediente a eliminar");
@@ -179,6 +215,156 @@ function eliminarIngrediantes(lista) {
     alert("Ingrediente no encontrado");
   }
 }
+/* CRUD CATEGORIAS*/
+function registrarCategorias(lista) {
+  let nombre = prompt(`=============================================
+  Registrar categoría
+=============================================
+        Ingrese el nombre`);
+  let descripcion = prompt("Ingrese la descripcion");
+  let categoria = {
+    nombre: nombre,
+    descripcion: descripcion,
+  };
+  let save = prompt(
+    `=============================================
+    Registrar categoría
+=============================================
+    ¿Desea guardar la categoría? (s/n)`
+  ).toLowerCase();
+  if (save == "s") {
+    alert("Categoría guardada correctamente");
+    lista.push(categoria);
+    return lista;
+  }
+  if (save == "n") {
+    alert("Categoría no guardada");
+  }
+  alert("Categoría registrada correctamente");
+}
+function listarCategorias(lista) {
+  let listado = "";
+  for (let i = 0; i < lista.length; i++) {
+    const element = lista[i];
+    listado += `Nombre: ${element.nombre}, Descripcion: ${element.descripcion}\n`;
+  }
+}
+function editarCategorias(lista) {
+  let encontrado = false;
+  let buscado = prompt("Ingrese el nombre de la categoría a editar");
+  for (let i = 0; i < lista.length; i++) {
+    const element = lista[i];
+    if (element.nombre == buscado) {
+      encontrado = true;
+      let nuevoNombre = prompt("Ingrese el nuevo nombre", element.nombre);
+      let nuevaDescripcion = prompt(
+        "Ingrese la nueva descripcion",
+        element.descripcion
+      );
+      lista[i] = {
+        nombre: nuevoNombre,
+        descripcion: nuevaDescripcion,
+      };
+      alert("Categoría actualizada correctamente");
+    }
+  }
+  if (!encontrado) {
+    alert("Categoría no encontrada");
+  }
+}
+function eliminarCategorias(lista) {
+  let encontradoD = false;
+  let buscadoD = prompt("Ingrese el nombre de la categoría a editar");
+  for (let i = 0; i < lista.length; i++) {
+    const element = lista[i];
+    if (element.nombre == buscadoD) {
+      encontradoD = true;
+      lista.splice(i, 1);
+      alert("Categoría eliminada correctamente");
+    }
+  }
+  if (!encontradoD) {
+    alert("Categoría no encontrada");
+  }
+}
+/* CRUD HAMBURGESA*/
+function registrarHamburguesa(lista) {
+  let nombre = prompt(`=============================================
+  Registrar hamburguesa
+  =============================================
+  Ingrese el nombre`);
+  let categoria = prompt("Ingrese la categoria");
+  let ingredientes = prompt(
+    "Ingrese los ingredientes (separados por comas)"
+  ).split(",");
+  let precio = prompt("Ingrese el precio");
+  let chef = prompt("Ingrese el nombre del chef");
+  let hamburguesa = {
+    nombre: nombre,
+    categoria: categoria,
+    ingredientes: ingredientes,
+    precio: precio,
+    chef: chef
+  };
+  let save = prompt(
+    `=============================================
+  Registrar hamburguesa
+  =============================================
+  ¿Desea guardar la hamburguesa? (s/n)`
+  ).toLowerCase();
+  if (save == "s") {
+    alert("Hamburguesa guardada correctamente");
+    lista.push(hamburguesa);
+  }
+  if (save == "n") {
+    alert("Hamburguesa no guardada");
+  }
+}
+function listarHamburguesa(lista) {
+  let listado = "";
+  for (let i = 0; i < lista.length; i++) {
+    const element = lista[i];
+    listado += `Nombre: ${element.nombre}, Descripcion: ${element.descripcion}\n`;
+  }
+}
+function editarHamburguesa(lista) {
+  let encontrado = false;
+  let buscado = prompt("Ingrese el nombre de la categoría a editar");
+  for (let i = 0; i < lista.length; i++) {
+    const element = lista[i];
+    if (element.nombre == buscado) {
+      encontrado = true;
+      let nuevoNombre = prompt("Ingrese el nuevo nombre", element.nombre);
+      let nuevaDescripcion = prompt(
+        "Ingrese la nueva descripcion",
+        element.descripcion
+      );
+      lista[i] = {
+        nombre: nuevoNombre,
+        descripcion: nuevaDescripcion,
+      };
+      alert("Categoría actualizada correctamente");
+    }
+  }
+  if (!encontrado) {
+    alert("Categoría no encontrada");
+  }
+}
+function eliminarHamburguesa(lista) {
+  let encontradoD = false;
+  let buscadoD = prompt("Ingrese el nombre de la categoría a editar");
+  for (let i = 0; i < lista.length; i++) {
+    const element = lista[i];
+    if (element.nombre == buscadoD) {
+      encontradoD = true;
+      lista.splice(i, 1);
+      alert("Categoría eliminada correctamente");
+    }
+  }
+  if (!encontradoD) {
+    alert("Categoría no encontrada");
+  }
+}
 let bol = true;
 while (bol) {
   let eano = true;
@@ -187,7 +373,7 @@ while (bol) {
 =============================================
 Seleccione una opcion:
 
-1. Menu Ingredientes
+1. Menu Categorias
 2. Menu Categorías
 3. Menu Hamburguesas
 4. Menu Chefs
@@ -198,48 +384,10 @@ Seleccione una opcion:
     case "1":
       eano = true;
       while (eano) {
-        let op = prompt(`=============================================
-  Hamburguesería 
-=============================================
-Seleccione una opcion:
-
-1. Registrar nuevo ingrediente
-2. Listar ingredientes
-3. Editar ingredientes
-4. Eliminar ingredientes
-5. Salir al menu principal
-=============================================`);
+        let op = prompt(menu("ingrediente"));
         switch (op) {
           case "1":
-            let nombre = prompt(`=============================================
-      Registrar ingrediente
-=============================================
-      Ingrese el nombre`);
-            let descripcion = prompt("Ingrese la descripcion");
-            let precio = prompt("Ingrese el precio");
-            let stock = prompt("Ingrese el stock");
-            let ingrediente = {
-              nombre: nombre,
-              descripcion: descripcion,
-              precio: precio,
-              stock: stock,
-            };
-            let save = prompt(
-              `=============================================
-        Registrar ingrediente
-=============================================
-        ¿Desea guardar el ingrediente? (s/n)`
-            ).toLowerCase();
-            if (save == "s") {
-              alert("Ingrediente guardado correctamente");
-              listIngredientes.push(ingrediente);
-              break;
-            }
-            if (save == "n") {
-              alert("Ingrediente no guardado");
-              break;
-            }
-            alert("Ingrediente registrado correctamente");
+            listIngredientes = registrarIngredientes(listIngredientes);
             break;
           case "2":
             listarIngrediantes(listIngredientes);
@@ -262,94 +410,16 @@ Seleccione una opcion:
     case "2":
       eano = true;
       while (eano) {
-        let op = prompt(`=============================================
-  Hamburguesería 
-=============================================
-Seleccione una opcion:
-
-1. Registrar nueva categoría
-2. Listar categorías
-3. Editar categorías
-4. Eliminar categorías
-5. Salir al menu principal
-=============================================`);
+        let op = prompt(menu("categoría"));
         switch (op) {
           case "1":
-            let nombre = prompt(`=============================================
-      Registrar categoría
-=============================================
-            Ingrese el nombre`);
-            let descripcion = prompt("Ingrese la descripcion");
-            let categoria = {
-              nombre: nombre,
-              descripcion: descripcion,
-            };
-            let save = prompt(
-              `=============================================
-        Registrar categoría
-=============================================
-        ¿Desea guardar la categoría? (s/n)`
-            ).toLowerCase();
-            if (save == "s") {
-              alert("Categoría guardada correctamente");
-              listCategorias.push(categoria);
-              break;
-            }
-            if (save == "n") {
-              alert("Categoría no guardada");
-              break;
-            }
-            alert("Categoría registrada correctamente");
-            break;
+            listCategorias = registrarCategorias(listCategorias);
           case "2":
-            let listado = "";
-            for (let i = 0; i < listCategorias.length; i++) {
-              const element = listCategorias[i];
-              listado += `Nombre: ${element.nombre}, Descripcion: ${element.descripcion}\n`;
-            }
-            break;
+            listarCategorias(listCategorias);
           case "3":
-            let encontrado = false;
-            let buscado = prompt("Ingrese el nombre de la categoría a editar");
-            for (let i = 0; i < listCategorias.length; i++) {
-              const element = listCategorias[i];
-              if (element.nombre == buscado) {
-                encontrado = true;
-                let nuevoNombre = prompt(
-                  "Ingrese el nuevo nombre",
-                  element.nombre
-                );
-                let nuevaDescripcion = prompt(
-                  "Ingrese la nueva descripcion",
-                  element.descripcion
-                );
-                listCategorias[i] = {
-                  nombre: nuevoNombre,
-                  descripcion: nuevaDescripcion,
-                };
-                alert("Categoría actualizada correctamente");
-              }
-            }
-            if (!encontrado) {
-              alert("Categoría no encontrada");
-            }
-
-            break;
+            editarCategorias(listCategorias);
           case "4":
-            let encontradoD = false;
-            let buscadoD = prompt("Ingrese el nombre de la categoría a editar");
-            for (let i = 0; i < listCategorias.length; i++) {
-              const element = listCategorias[i];
-              if (element.nombre == buscadoD) {
-                encontrado = true;
-                listCategorias.splice(i, 1);
-                alert("Categoría eliminada correctamente");
-              }
-            }
-            if (!encontradoD) {
-              alert("Categoría no encontrada");
-            }
-            break;
+            eliminarCategorias(listCategorias);
           case "5":
             eano = regresar();
             break;
@@ -362,53 +432,12 @@ Seleccione una opcion:
     case "3":
       eano = true;
       while (eano) {
-        let op = prompt(`=============================================
-  Hamburguesería 
-=============================================
-Seleccione una opcion:
-1. Registrar nueva hamburguesa
-2. Listar hamburguesas
-3. Editar hamburguesa
-4. Eliminar hamburguesa
-5. Salir al menu principal
-=============================================`);
+        let op = prompt(menu("hamburguesa"));
         switch (op) {
           case "1":
-            let nombre = prompt(`=============================================
-              Registrar hamburguesa
-              =============================================
-              Ingrese el nombre`);
-            let categoria = prompt("Ingrese la categoria");
-            let ingredientes = prompt(
-              "Ingrese los ingredientes (separados por comas)"
-            ).split(",");
-            let precio = prompt("Ingrese el precio");
-            let chef = prompt("Ingrese el nombre del chef");
-            let hamburguesa = {
-              nombre: nombre,
-              categoria: categoria,
-              ingredientes: ingredientes,
-              precio: precio,
-              chef: chef,
-            };
-            let save = prompt(
-              `=============================================
-              Registrar hamburguesa
-              =============================================
-              ¿Desea guardar la hamburguesa? (s/n)`
-            ).toLowerCase();
-            if (save == "s") {
-              alert("Hamburguesa guardada correctamente");
-              listHamburgesas.push(hamburguesa);
-              break;
-            }
-            if (save == "n") {
-              alert("Hamburguesa no guardada");
-              break;
-            }
-            break;
-
+            registrarHamburguesa(listHamburgesas)
           case "2":
+            console.log(listHamburgesas);
             let listado = "";
             for (let i = 0; i < listHamburgesas.length; i++) {
               const element = listHamburgesas[i];
@@ -489,16 +518,7 @@ Seleccione una opcion:
     case "4":
       eano = true;
       while (eano) {
-        let op = prompt(`=============================================
-  Hamburguesería 
-=============================================
-Seleccione una opcion:
-1. Registrar nuevo chef
-2. Listar chefs
-3. Editar chef
-4. Eliminar chef
-5. Salir al menu principal
-=============================================`);
+        let op = prompt(menu("chef"));
         switch (op) {
           case "1":
             let nombre = prompt(`=============================================
