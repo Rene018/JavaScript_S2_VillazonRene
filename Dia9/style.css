@@ -20,18 +20,27 @@ body{
     justify-content: center;
 }
 .pokedex img{
-    width: 600px;
+    width: 22vw;
     height: auto;
 }
 .pokedex-cont{
-    width: 600px;
-    height: 899px;
+    width: 22vw;
+    height: auto;
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 .pokedex-cont img{
     width: 100px;
     height: auto;
+
+}
+.poke{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
 }
