@@ -1,46 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap&#39');
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap&#39");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Oxanium', cursive;
-    }
-body{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #56c5c7;
-    background: linear-gradient(0deg, rgba(86, 197, 199, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Oxanium", cursive;
 }
-.pokedex{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #56c5c7;
+  background: linear-gradient(
+    0deg,
+    rgba(86, 197, 199, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
-.pokedex img{
-    width: 22vw;
-    height: auto;
+.pokedex {
+  background-image: url("./img/pokedex (1).png");
+  width: 22vw;
+  height: 33vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
-.pokedex-cont{
-    width: 22vw;
-    height: auto;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.pokedex img {
+  width: 100%;
+  height: auto;
 }
-.pokedex-cont img{
+.pokedex-cont {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.pokedex-cont img {
+  width: 100px;
+  height: auto;
+}
+.poke-info{
+  width: 100%;
+  padding: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.poke-info p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+  text-transform: capitalize;
+}
+
+#img-cont {
+  display: flex;
+  height: 64%;
+  width: 100%;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+}
+#img-cont img {
+    margin-right: 8%;
     width: 100px;
     height: auto;
-
-}
-.poke{
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
+    max-width: 24%;
 }

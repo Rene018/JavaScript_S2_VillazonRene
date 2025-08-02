@@ -1123,8 +1123,8 @@ function getSingleCharacter(name) {
         pokeImg.innerHTML = "";
         pokeImg.innerHTML = `<div id="img-cont">
         <img src="${character["sprites"]["other"]["showdown"]["front_default"]}" alt="">
-        <div><h5 id="pokeid">${character["id"]}</h5> <p>${character["name"]}</p></div>`;
-        cont= parseInt(character["id"])
+        <div class="poke-info"><p id="pokeid">${character["id"]}</p> <p>${character["name"]}</p></div>`;
+        cont = parseInt(character["id"]);
       }
     } catch (error) {
       console.log(error);
@@ -1151,8 +1151,8 @@ function getCharacterByBtn(name) {
         pokeImg.innerHTML = "";
         pokeImg.innerHTML = `<div id="img-cont">
         <img src="${character["sprites"]["other"]["showdown"]["front_default"]}" alt="">
-        <div><h5 id="pokeid">${character["id"]}</h5> <p>${character["name"]}</p></div>`;
-        cont= parseInt(character["id"])
+        <div class="poke-info"><p id="pokeid">${character["id"]}</p> <p>${character["name"]}</p></div>`;
+        cont = parseInt(character["id"]);
       }
     } catch (error) {
       console.log(error);
@@ -1169,7 +1169,7 @@ btnNext.addEventListener("click", function (event) {
   getSingleCharacter(cont);
 });
 btnPrev.addEventListener("click", function (event) {
-  if (cont >1) {
+  if (cont > 1) {
     cont -= 1;
     event.preventDefault();
     console.log(cont);
