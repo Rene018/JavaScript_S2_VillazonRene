@@ -4,8 +4,10 @@ import { NewPile, ListPile } from "./Pilescustom.js";
 export let currentTurn = "jugador1";
 export let deckId = "";
 export let stayCount = 0;
+
 export async function startGame() {
   console.log("Iniciando el juego...");
+  clearGame();
   const jugadores = [
     { nombre: "dealer", mano: [] },
     { nombre: "jugador1", mano: [] },
@@ -14,7 +16,7 @@ export async function startGame() {
 
   const deck = await NewDeck();
   deckId = deck["deck_id"];
-  
+
   for (let i = 0; i < 2; i++) {
     const cards = await NewCard(deck["deck_id"], jugadores.length);
 
@@ -25,7 +27,7 @@ export async function startGame() {
 
   for (const jugador of jugadores) {
     const cardCodes = jugador["mano"].map((c) => c["code"]).join(",");
-    
+
     await NewPile(deck["deck_id"], jugador["nombre"], cardCodes);
   }
   for (const jugador of jugadores) {
@@ -41,8 +43,6 @@ export async function startGame() {
   }
 }
 async function drawCards(deck_id, player, cont) {
-    
-    
   const pile = await ListPile(deck_id, player);
   console.log(pile);
   const cards = pile["piles"]?.[player]?.["cards"] || [];
@@ -57,7 +57,7 @@ async function drawCards(deck_id, player, cont) {
 export async function hitCard(deck_id, currentTurn) {
   let sePaso = await isBusted(deck_id, currentTurn);
   if (sePaso) {
-    console.log(`${currentTurn} ya se pasó de 21. No puede pedir más cartas.`);
+    showModal(currentTurn, "perdiste");
     await changeTurn();
     return;
   }
@@ -69,7 +69,7 @@ export async function hitCard(deck_id, currentTurn) {
   await drawCards(deck_id, currentTurn, `${currentTurn}-imgs`);
   sePaso = await isBusted(deck_id, currentTurn);
   if (sePaso) {
-    console.log(`${currentTurn} ya se pasó de 21. No puede pedir más cartas.`);
+    showModal(currentTurn, "perdiste");
     await changeTurn();
     return;
   }
@@ -137,20 +137,42 @@ async function isBusted(deck_id, player) {
   return points > 21;
 }
 
-function showResults(jugador, puntosJugador, puntosDealer) {
+export function showResults(jugador, puntosJugador, puntosDealer) {
   let resultado = "";
 
   if (puntosJugador > 21) {
-    resultado = `${jugador} pierde (se pasó).`;
+    resultado = `Te pasaste de 21, Pierdes`;
   } else if (puntosDealer > 21) {
-    resultado = `${jugador} gana (dealer se pasó).`;
+    resultado = `Dealer se paso, Ganas`;
   } else if (puntosJugador > puntosDealer) {
-    resultado = `${jugador} gana.`;
+    resultado = `Ganaste!`;
   } else if (puntosJugador < puntosDealer) {
-    resultado = `${jugador} pierde.`;
+    resultado = `Perdiste`;
   } else {
-    resultado = `${jugador} empata.`;
+    resultado = `Empate`;
   }
 
-  alert(resultado); // O puedes mostrarlo en el DOM
+  showModal(jugador, resultado);
+  setTimeout(()=>{
+ const modal3 = document.getElementById("continue");
+   modal3.style.visibility = "visible";
+  }, 1500);
+
+}
+export function showModal(player, message) {
+  const modal = document.getElementById(
+    `modal-${player === "jugador1" ? "1" : "2"}`
+  );
+  const content = modal.querySelector(".modal-content");
+  content.innerHTML = `<h1>${message}</h1>`;
+  modal.style.visibility = "visible";
+}
+export function clearGame() {
+  const modal = document.getElementById(`modal-1`);
+  const modal2 = document.getElementById(`modal-2`);
+  const modal3 = document.getElementById("continue");
+
+  modal.style.visibility = "hidden";
+  modal2.style.visibility = "hidden";
+  modal3.style.visibility = "hidden";
 }

@@ -9,6 +9,9 @@ body {
   min-width: 100vw;
   justify-content: center;
 }
+.title {
+  color: #dfdee4;
+}
 .main {
   display: flex;
   flex-wrap: wrap;
@@ -68,4 +71,41 @@ body {
   background-color: #27042b;
   border: 1px solid black;
   color: #dfdee4;
+}
+.modal {
+  display: flex;
+  position: fixed;
+  background-color: #27042b63;
+  height: 40%;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+.modal h1 {
+  background-color: #dfdee4;
+  color: black;
+  padding: 3%;
+  border-radius: 0.5rem;
+}
+#continue {
+  display: flex;
+  position: fixed;
+  background-color: #00000098;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  visibility: visible;
+}
+.continue-cont {
+  display: flex;
+  background-color: #dfdee4;
+  height: 300px;
+  width: 350px;
+  border-radius: 1rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }

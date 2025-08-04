@@ -7,6 +7,7 @@ import {
 } from "./scripts/Game.js";
 const hitBtn = document.getElementById("hit");
 const stayBtn = document.getElementById("stay");
+const continueBtn = document.getElementById("continue-btn");
 async function main() {
   try {
     await startGame();
@@ -18,6 +19,9 @@ async function main() {
 
     stayBtn.addEventListener("click", () => {
       changeTurn();
+    });
+    continueBtn.addEventListener("click", () => {
+      startGame();
     });
   } catch (error) {
     console.error("No se pudo obtener un nuevo mazo:", error);
