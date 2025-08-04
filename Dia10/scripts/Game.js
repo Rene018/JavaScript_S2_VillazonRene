@@ -6,7 +6,6 @@ export let deckId = "";
 export let stayCount = 0;
 
 export async function startGame() {
-  console.log("Iniciando el juego...");
   clearGame();
   const jugadores = [
     { nombre: "dealer", mano: [] },
@@ -83,14 +82,26 @@ export async function changeTurn() {
   stayCount += 1;
 
   if (stayCount == 2) {
-    console.log("Ambos jugadores terminaron. Turno del dealer...");
+    document.getElementById("turn-cont").innerHTML = `
+      <div class="turn">
+        <h1>CRUPIER</h1>
+      </div>
+    `;
     await dealerTurn();
     stayCount = 0;
     return;
   }
+
   currentTurn = currentTurn === "jugador1" ? "jugador2" : "jugador1";
-  console.log("Turno cambiado a:", currentTurn);
+
+  const turnDisplay = currentTurn === "jugador1" ? "PLAYER 1" : "PLAYER 2";
+  document.getElementById("turn-cont").innerHTML = `
+    <div class="turn">
+      <h1>${turnDisplay}</h1>
+    </div>
+  `;
 }
+
 async function dealerTurn() {
   let dealerPoints = await getPointsFromPile(deckId, "dealer");
 
@@ -153,11 +164,10 @@ export function showResults(jugador, puntosJugador, puntosDealer) {
   }
 
   showModal(jugador, resultado);
-  setTimeout(()=>{
- const modal3 = document.getElementById("continue");
-   modal3.style.visibility = "visible";
+  setTimeout(() => {
+    const modal3 = document.getElementById("continue");
+    modal3.style.visibility = "visible";
   }, 1500);
-
 }
 export function showModal(player, message) {
   const modal = document.getElementById(
@@ -171,8 +181,14 @@ export function clearGame() {
   const modal = document.getElementById(`modal-1`);
   const modal2 = document.getElementById(`modal-2`);
   const modal3 = document.getElementById("continue");
+  const turnCont = document.getElementById("turn-cont");
 
   modal.style.visibility = "hidden";
   modal2.style.visibility = "hidden";
   modal3.style.visibility = "hidden";
+  turnCont.innerHTML = `
+      <div class="turn">
+        <h1>PLAYER 1</h1>
+      </div>
+    `;
 }

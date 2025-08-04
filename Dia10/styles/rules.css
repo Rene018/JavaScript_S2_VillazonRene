@@ -1,0 +1,27 @@
+.rules-container {
+  color: aliceblue;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rules-container h2 {
+  text-align: center;
+}
+
+.rules-container ul {
+  display: flex;
+  gap: 10px;
+  list-style-type: disc;
+  padding-left: 20px;
+  flex-direction: column;
+}
+
+.rules-container ul ul {
+  list-style-type: circle;
+}
