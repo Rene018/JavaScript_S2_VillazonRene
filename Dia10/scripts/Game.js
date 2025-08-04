@@ -30,10 +30,6 @@ export async function startGame() {
     await NewPile(deck["deck_id"], jugador["nombre"], cardCodes);
   }
   for (const jugador of jugadores) {
-    jugador["mano"].forEach((e) => {
-      console.log(e["value"]);
-    });
-
     await drawCards(
       deck["deck_id"],
       jugador["nombre"],
@@ -43,8 +39,11 @@ export async function startGame() {
 }
 async function drawCards(deck_id, player, cont) {
   const pile = await ListPile(deck_id, player);
-  console.log(pile);
   const cards = pile["piles"]?.[player]?.["cards"] || [];
+  if (player == "dealer" && stayCount < 2) {
+    cards[0]["image"] = "https://www.deckofcardsapi.com/static/img/back.png";
+    console.log(cards[0]["image"]);
+  }
   const cardsCont = document.getElementById(cont);
   cardsCont.innerHTML = "";
   cards.forEach((card) => {
@@ -61,7 +60,6 @@ export async function hitCard(deck_id, currentTurn) {
     return;
   }
   const cards = await NewCard(deck_id);
-  console.log(cards);
   const nuevaCarta = cards[0];
   await NewPile(deck_id, currentTurn, nuevaCarta["code"]);
 
@@ -103,6 +101,7 @@ export async function changeTurn() {
 }
 
 async function dealerTurn() {
+  drawCards(deckId, "dealer", "dealer-imgs");
   let dealerPoints = await getPointsFromPile(deckId, "dealer");
 
   while (dealerPoints < 17) {
