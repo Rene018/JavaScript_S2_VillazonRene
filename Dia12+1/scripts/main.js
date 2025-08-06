@@ -14,12 +14,10 @@ function getCharacter(token, name) {
         const { results } = character;
         console.log(results);
         if (results) {
-            showResults(results);
+          showResults(results);
+        } else {
+          console.log("no hay resultados");
         }
-        else{
-            console.log('no hay resultados');
-        }
-        
       }
     } catch (error) {
       console.log(error);
@@ -33,13 +31,12 @@ async function showResults(characterList) {
   const cardsCont = document.getElementById("card-cont");
   cardsCont.innerHTML = "";
   characterList.forEach((c) => {
-    cardsCont.innerHTML += `      <div class=" ">
-        <img
-          src=${c["image"]["url"]}
-          alt=""
-        />
-        <div>
-          <p>${c["id"]} - ${c["name"]}</p>
+    cardsCont.innerHTML += `
+      <div class="card text-left col-2 pt-2">
+        <img class="card-img-top" src=${c["image"]["url"]} alt="">
+        <div class="card-body">
+          <h4 class="card-title">${c["id"]}</h4>
+          <p class="card-text">${c["name"]}</p>
         </div>
       </div>`;
   });
@@ -47,9 +44,9 @@ async function showResults(characterList) {
 
 function main() {
   document.getElementById("form").addEventListener("submit", (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const nombre = document.getElementById("busq").value;
     getCharacter(TOKEN, nombre);
   });
 }
-main()
+main();
