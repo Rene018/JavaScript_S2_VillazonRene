@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <section id="main-container">
+        <h1 id="main-title">Just do it.</h1>
+        
+        <div id="task-bar">
+            <input type="text" id="task-input" placeholder="Add a task.">
+            <button id="add-task-btn">I Got This!</button>
+        </div>
+    </section>
+
+    <section id="task-list">
+        <div class="task">
+            <div class="task-text">Ejemplo de tarea</div>
+            <div class="task-buttons">
+                <div class="task-btn"><img src="./storage/img/burger.svg" alt="Añadir subtarea"></div>
+                <div class="task-btn"><img src="./storage/img/pngwing.com (2).png" alt="Completar"></div>
+                <div class="task-btn"><img src="./storage/img/pngwing.com (4).png" alt="Eliminar"></div>
+            </div>
+        </div>
+
+        <div class="task-completed">
+            <div>
+            <div class="task-text">Tarea completada</div>
+            <div class="task-buttons">
+                <div class="task-btn-disabled"><img src="./storage/img/burger.svg" alt="Añadir subtarea"></div>
+                <div class="task-btn-disabled"><img src="./storage/img/pngwing.com (2).png" alt="Completar"></div>
+                <div class="task-btn-disabled"><img src="./storage/img/pngwing.com (4).png" alt="Eliminar"></div>
+            </div>
+            </div>
+            
+
+        </div>
+    </section>
+</body>
+</html>
