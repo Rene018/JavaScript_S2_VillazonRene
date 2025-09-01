@@ -1,14 +1,22 @@
-function listar(list, title) {
-  let charactersList = "";
-  list.forEach((character) => {
-    charactersList += `#${character.id}  Nombre: ${character.name} Especie: ${character.species} Estado: ${character.status}
-            `;
-  });
-  alert(`${title}:\n${charactersList}`);
+function listar(list) {
+  const resultsDiv = document.getElementById("results");
+  resultsDiv.innerHTML = "";
+  list.forEach(char => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <img src="${char.image}" alt="${char.name}">
+            <h3>${char.name}</h3>
+            <p>ID: ${char.id}</p>
+            <p>Especie: ${char.species}</p>
+            <p>Estado: ${char.status}</p>
+          `;
+          resultsDiv.appendChild(card);
+        });
 }
 function getCbm() {
   let getCharacterByName = new XMLHttpRequest();
-  let nombre = prompt("Introduce el nombre del personaje que quieres buscar:");
+  let nombre = document.getElementById("buscador").value;
   getCharacterByName.open(
     "GET",
     `https://rickandmortyapi.com/api/character/?name=${nombre}`,
@@ -19,7 +27,7 @@ function getCbm() {
       let response = JSON.parse(getCharacterByName.responseText);
       let characters = response.results;
       if (characters.length > 0) {
-        listar(characters, "Personajes encontrados");
+        listar(characters);
       }
     } else {
       alert("Error: " + getCharacterByName.statusText);
@@ -33,12 +41,14 @@ getAllCharacters.addEventListener("load", function () {
   if (getAllCharacters.status >= 200 && getAllCharacters.status < 300) {
     let response = JSON.parse(getAllCharacters.responseText);
     let characters = response.results;
-    listar(characters, "Personajes de Rick y Morty");
-    // llama a la función para buscar un personaje por nombre
-    getCbm();
+    listar(characters);
+    
   } else {
     alert("Error: " + getAllCharacters.statusText);
   }
 });
 
 getAllCharacters.send();
+document.getElementById("botoncito").addEventListener("click", function() {
+  getCbm();
+});

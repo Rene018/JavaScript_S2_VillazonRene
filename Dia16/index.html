@@ -5,39 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tareas</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
+    <div class="container">
     <section id="main-container">
-        <h1 id="main-title">Just do it.</h1>
-        
-        <div id="task-bar">
-            <input type="text" id="task-input" placeholder="Add a task.">
-            <button id="add-task-btn">I Got This!</button>
+        <h1 id="main-title">Just do it.</h1>        
+        <div class="input-group mb-3">
+            
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                <label for="floatingInputGroup1">Task</label>
+            </div>
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">I Got This!</button>
         </div>
     </section>
 
     <section id="task-list">
-        <div class="task">
-            <div class="task-text">Ejemplo de tarea</div>
-            <div class="task-buttons">
-                <div class="task-btn"><img src="./storage/img/burger.svg" alt="Añadir subtarea"></div>
-                <div class="task-btn"><img src="./storage/img/pngwing.com (2).png" alt="Completar"></div>
-                <div class="task-btn"><img src="./storage/img/pngwing.com (4).png" alt="Eliminar"></div>
-            </div>
-        </div>
-
-        <div class="task-completed">
-            <div>
-            <div class="task-text">Tarea completada</div>
-            <div class="task-buttons">
-                <div class="task-btn-disabled"><img src="./storage/img/burger.svg" alt="Añadir subtarea"></div>
-                <div class="task-btn-disabled"><img src="./storage/img/pngwing.com (2).png" alt="Completar"></div>
-                <div class="task-btn-disabled"><img src="./storage/img/pngwing.com (4).png" alt="Eliminar"></div>
-            </div>
-            </div>
-            
-
-        </div>
     </section>
+    </div>
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </html>

@@ -1176,4 +1176,8 @@ btnPrev.addEventListener("click", function (event) {
     getSingleCharacter(cont);
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  getSingleCharacter(1);
+});
 //console.log(po['sprites']['other']['showdown']['front_default']);
